@@ -4,6 +4,17 @@ import React from "react";
 import { IMAGE_BASE_URL } from "@/config/config";
 
 const AboutSection = ({ about }) => {
+  // Nếu about hoặc about.image không tồn tại, hiển thị thông báo hoặc ảnh mặc định
+  if (!about || !about.image) {
+    return (
+      <div className="about-block lg:py-[100px] sm:py-16 py-10 bg-gradient-to-r from-gray-900 via-black to-gray-800">
+        <div className="container text-center text-white">
+          <p>Thông tin đang được cập nhật...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="about-block lg:py-[100px] sm:py-16 py-10 bg-gradient-to-r from-gray-900 via-black to-gray-800">
       <div className="container">
@@ -23,9 +34,7 @@ const AboutSection = ({ about }) => {
 
           {/* Content Section */}
           <div className="w-full lg:w-1/2 flex-col lg:pl-10 text-white">
-            <div className="heading3 font-bold text-4xl">
-              {about.title}
-            </div>
+            <div className="heading3 font-bold text-4xl">{about.title}</div>
             <div className="nav-infor mt-6 text-lg leading-relaxed text-white/90">
               {about.description}
             </div>
