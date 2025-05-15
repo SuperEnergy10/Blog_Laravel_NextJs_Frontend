@@ -1,25 +1,25 @@
 import React from "react";
 
-const Counter = ({ about, classname }) => {
+const Counter = ({ about = {}, classname }) => {
   return (
     <div className="container bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl pt-10 pb-12 shadow-inner">
       <div className={`counter-block ${classname}`}>
         <div className="grid xl:grid-cols-4 grid-cols-2 gap-8 px-4">
           {[
             {
-              count: about.setup_growth,
+              count: about?.setup_growth ?? 0,
               label: "Business Setup Growth",
             },
             {
-              count: about.passive_income,
+              count: about?.passive_income ?? 0,
               label: "Business Passive Income",
             },
             {
-              count: about.problem_solving,
+              count: about?.problem_solving ?? 0,
               label: "Business Problem Solving",
             },
             {
-              count: about.goal_achiever,
+              count: about?.goal_achiever ?? 0,
               label: "Business Goal Achiever",
             },
           ].map((item, index) => (
