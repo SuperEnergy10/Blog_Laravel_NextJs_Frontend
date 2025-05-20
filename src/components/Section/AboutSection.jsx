@@ -9,7 +9,7 @@ const AboutSection = ({ about }) => {
     return (
       <div className="about-block lg:py-[100px] sm:py-16 py-10 bg-gradient-to-r from-gray-900 via-black to-gray-800">
         <div className="container text-center text-white">
-          <p>Thông tin đang được cập nhật...</p>
+          <p>Information is being updated...</p>
         </div>
       </div>
     );
