@@ -1,61 +1,42 @@
 'use client'
+import Image from "next/image";
 import React from "react";
 import { IMAGE_BASE_URL } from "@/config/config";
 
-const fallbackAbout = {
-  title: "About Us",
-  description:
-    "We are a professional, creative, and dedicated team with a mission to deliver the best products and services to our customers.",
-  phone: "0987-654-321",
-};
-
 const AboutSection = ({ about }) => {
-  const data = {
-    ...fallbackAbout,
-    ...about,
-  };
+  const hasContent = about && (about.title || about.description || about.phone);
 
   return (
     <div className="about-block lg:py-[100px] sm:py-16 py-10 bg-gradient-to-r from-gray-900 via-black to-gray-800">
       <div className="container">
         <div className="row flex max-lg:flex-col lg:items-center gap-y-10 gap-x-8">
-          
-          {/* Show image only if available */}
-          {data.image && (
-            <div className="w-full lg:w-1/2">
-              <div className="bg-img w-full overflow-hidden rounded-3xl shadow-xl ml-4">
-                <img
-                  src={`${IMAGE_BASE_URL}/${data.image}`}
-                  alt="About"
-                  className="w-full h-full object-cover scale-100 hover:scale-105 transition-all duration-500"
-                />
-              </div>
+          {/* Content Section */}
+          <div className="w-full flex flex-col items-center text-center text-white">
+            <div className="heading3 font-extrabold text-4xl text-white/90">
+              {hasContent ? about.title : "Welcome to Our Business"}
             </div>
-          )}
-
-          {/* Text content */}
-          <div className={`w-full ${data.image ? "lg:w-1/2" : "lg:w-full"} flex-col lg:pl-10 text-white`}>
-            <div className="heading3 font-bold text-4xl">{data.title}</div>
-            <div className="nav-infor mt-6 text-lg leading-relaxed text-white/90">
-              {data.description}
+            <div className="nav-infor mt-6 text-lg leading-relaxed text-gray-200 max-w-3xl">
+              {hasContent ? about.description : "We're working on updating our story. Stay tuned for exciting updates about our mission and values!"}
             </div>
 
-            <div className="button-block flex flex-wrap items-center gap-4 md:mt-10 mt-6 pb-2">
+            {/* Buttons */}
+            <div className="button-block flex flex-wrap justify-center gap-4 md:mt-10 mt-6 pb-2">
               <a
                 href="#"
-                className="px-7 py-3 bg-gradient-to-r from-gray-800 via-gray-700 to-black text-white rounded-full shadow-xl hover:brightness-125 transition-all duration-300 text-sm font-semibold uppercase tracking-wider"
+                className="px-7 py-3 bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 text-white rounded-full shadow-xl hover:brightness-110 transition-all duration-300 text-sm font-semibold uppercase tracking-wider"
               >
                 Get Started
               </a>
-              <a
-                href={`tel:${data.phone}`}
-                className="px-7 py-3 bg-black text-white rounded-full border-2 border-white shadow-xl hover:bg-white hover:text-black transition-all duration-300 text-sm font-semibold"
-              >
-                {data.phone}
-              </a>
+              {about?.phone && (
+                <a
+                  href={`tel:${about.phone}`}
+                  className="px-7 py-3 bg-white text-black rounded-full border-2 border-white shadow-xl hover:bg-gray-100 transition-all duration-300 text-sm font-semibold"
+                >
+                  {about.phone}
+                </a>
+              )}
             </div>
           </div>
-
         </div>
       </div>
     </div>
