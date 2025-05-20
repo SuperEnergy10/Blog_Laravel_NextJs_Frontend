@@ -1,15 +1,13 @@
 import React from "react";
 
 const Counter = ({ about = {}, classname }) => {
-  // Giá trị mặc định nếu about không có đủ dữ liệu
   const defaultData = {
-    setup_growth: 500,
-    passive_income: 900,
-    problem_solving: 800,
-    goal_achiever: 600,
+    setup_growth: 555,
+    passive_income: 999,
+    problem_solving: 888,
+    goal_achiever: 666,
   };
 
-  // Dữ liệu hiển thị (ưu tiên from `about`, fallback to default)
   const data = {
     setup_growth: about?.setup_growth ?? defaultData.setup_growth,
     passive_income: about?.passive_income ?? defaultData.passive_income,
@@ -17,7 +15,6 @@ const Counter = ({ about = {}, classname }) => {
     goal_achiever: about?.goal_achiever ?? defaultData.goal_achiever,
   };
 
-  // Danh sách các chỉ số
   const items = [
     { count: data.setup_growth, label: "Business Setup Growth" },
     { count: data.passive_income, label: "Business Passive Income" },
@@ -36,13 +33,13 @@ const Counter = ({ about = {}, classname }) => {
             return (
               <div
                 key={index}
-                className="bg-black/80 backdrop-blur-md p-6 rounded-2xl flex flex-col items-center shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className="bg-gray-700/90 backdrop-blur-md p-6 rounded-2xl flex flex-col items-center shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                <div className="count-block flex items-center text-3xl font-bold text-teal-500">
+                <div className="count-block flex items-center text-4xl font-extrabold text-white">
                   <div className="counter">{displayCount}</div>
-                  {showK && <span className="ml-1 text-xl">k</span>}
+                  {showK && <span className="ml-1 text-2xl">k</span>}
                 </div>
-                <div className="text-xs text-gray-300 mt-2 text-center font-medium">
+                <div className="text-sm text-gray-100 mt-2 text-center font-semibold">
                   {item.label}
                 </div>
               </div>
